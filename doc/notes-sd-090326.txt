@@ -14,3 +14,55 @@ DAT1
 DAT2
 DAT3			CS	CS	GP13
 CLK	SCLK,CLOCK	CSK	CSK	GP10
+
+git clone -b test-dev --recursive https://github.com/develone/pico-vfs.git
+cd pico-vfs
+mkdir build-rp2040	mkdir build-rp2350
+cd build-rp2040
+devel@pi5-90:~/pico-vfs/build-rp2040 $ cmake .. -DPICO_BOARD=pico -DPICO_PLATFORM=rp2040
+devel@pi5-90:~/pico-vfs/build-rp2040 $ make
+devel@pi5-90:~/pico-vfs/build-rp2040 $ cd examples/hello/
+devel@pi5-90:~/pico-vfs/build-rp2040/examples/hello $ make
+devel@pi5-90:~/pico-vfs/build-rp2040/examples/hello $ ls -la
+total 3912
+drwxr-xr-x 3 devel devel    4096 Sep  3 20:18 .
+drwxr-xr-x 9 devel devel    4096 Sep  3 20:09 ..
+drwxr-xr-x 3 devel devel    4096 Sep  3 20:09 CMakeFiles
+-rw-r--r-- 1 devel devel    1130 Sep  3 20:04 cmake_install.cmake
+-rwxr-xr-x 1 devel devel   84948 Sep  3 20:18 hello.bin
+-rw-r--r-- 1 devel devel 1525163 Sep  3 20:18 hello.dis
+-rwxr-xr-x 1 devel devel 1256928 Sep  3 20:18 hello.elf
+-rw-r--r-- 1 devel devel  527911 Sep  3 20:18 hello.elf.map
+-rw-r--r-- 1 devel devel  238986 Sep  3 20:18 hello.hex
+-rw-r--r-- 1 devel devel  169984 Sep  3 20:18 hello.uf2
+-rw-r--r-- 1 devel devel  173124 Sep  3 20:04 Makefile
+devel@pi5-90:~/pico-vfs/build-rp2040/examples/hello $ cd ../usb_logger/
+devel@pi5-90:~/pico-vfs/build-rp2040/examples/usb_logger $ make
+devel@pi5-90:~/pico-vfs/build-rp2040/examples/usb_logger $ ls -la
+total 5888
+drwxr-xr-x 3 devel devel    4096 Sep  3 20:24 .
+drwxr-xr-x 9 devel devel    4096 Sep  3 20:09 ..
+drwxr-xr-x 3 devel devel    4096 Sep  3 20:09 CMakeFiles
+-rw-r--r-- 1 devel devel    1135 Sep  3 20:04 cmake_install.cmake
+-rw-r--r-- 1 devel devel  188631 Sep  3 20:04 Makefile
+-rwxr-xr-x 1 devel devel  192824 Sep  3 20:24 usb_logger.bin
+-rw-r--r-- 1 devel devel 2406878 Sep  3 20:24 usb_logger.dis
+-rwxr-xr-x 1 devel devel 1704564 Sep  3 20:24 usb_logger.elf
+-rw-r--r-- 1 devel devel  569428 Sep  3 20:24 usb_logger.elf.map
+-rw-r--r-- 1 devel devel  542414 Sep  3 20:24 usb_logger.hex
+-rw-r--r-- 1 devel devel  386048 Sep  3 20:24 usb_logger.uf2
+devel@pi5-90:~/pico-vfs/build-rp2040/examples/usb_logger $ cd ../benchmark/
+devel@pi5-90:~/pico-vfs/build-rp2040/examples/benchmark $ make
+devel@pi5-90:~/pico-vfs/build-rp2040/examples/benchmark $ ls -la
+total 5252
+drwxr-xr-x 3 devel devel    4096 Sep  3 20:27 .
+drwxr-xr-x 9 devel devel    4096 Sep  3 20:09 ..
+-rwxr-xr-x 1 devel devel  176948 Sep  3 20:27 benchmark.bin
+-rw-r--r-- 1 devel devel 2050544 Sep  3 20:27 benchmark.dis
+-rwxr-xr-x 1 devel devel 1511308 Sep  3 20:27 benchmark.elf
+-rw-r--r-- 1 devel devel  573203 Sep  3 20:27 benchmark.elf.map
+-rw-r--r-- 1 devel devel  497766 Sep  3 20:27 benchmark.hex
+-rw-r--r-- 1 devel devel  354304 Sep  3 20:27 benchmark.uf2
+drwxr-xr-x 3 devel devel    4096 Sep  3 20:09 CMakeFiles
+-rw-r--r-- 1 devel devel    1134 Sep  3 20:04 cmake_install.cmake
+-rw-r--r-- 1 devel devel  184761 Sep  3 20:04 Makefile
