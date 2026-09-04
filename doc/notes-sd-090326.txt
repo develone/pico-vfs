@@ -1,0 +1,16 @@
+09/03/26
+https://youtu.be/IkttzdMxBO8?is=JHu2yU5Xmz05hhga
+
+https://digilent.com/reference/pmod/pmodmicrosd/reference-manual
+
+https://digilent.com/reference/_media/reference/pmod/pmodmicrosd/pmodmicrosd_sch.pdf
+
+					SPI1
+VDD	VCC,3V3		3V3	3V3	3V3
+GRD	VSS		GRD	GRD	GND
+CMD	MOSI		MOSI	MOSI	GP11
+DAT0	DO,MISO		MISO	MOSO	GP12
+DAT1
+DAT2
+DAT3			CS	CS	GP13
+CLK	SCLK,CLOCK	CSK	CSK	GP10
