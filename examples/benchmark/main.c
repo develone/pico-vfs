@@ -16,7 +16,12 @@
 #include "filesystem/fat.h"
 #include "filesystem/littlefs.h"
 #include "filesystem/vfs.h"
-
+#define SDIO_SCK 10
+#define SDIO_CMD 11 // TX
+#define SDIO_D0 12 // RX
+//#define SDIO_D1 13
+//#define SDIO_D2 14
+#define SDIO_D3 13 //CS
 
 #define COLOR_RED(format)    ("\e[31m" format "\e[0m")
 #define COLOR_GREEN(format)  ("\e[32m" format "\e[0m")
@@ -48,6 +53,7 @@ static void print_progress(const char *label, size_t current, size_t total) {
 
 static void init_filesystem_combination(void) {
     blockdevice_t *flash = blockdevice_flash_create(0.5 * 1024 * 1024, 0);
+    /*
     blockdevice_t *sd = blockdevice_sd_create(spi0,
                                               PICO_DEFAULT_SPI_TX_PIN,
                                               PICO_DEFAULT_SPI_RX_PIN,
@@ -55,6 +61,14 @@ static void init_filesystem_combination(void) {
                                               PICO_DEFAULT_SPI_CSN_PIN,
                                               24 * MHZ,
                                               false);
+    */
+    blockdevice_t *sd = blockdevice_sd_create(spi1,
+        SDIO_CMD,
+        SDIO_D0,
+        SDIO_SCK,
+        SDIO_D3,
+        10 * MHZ,
+        false);
     filesystem_t *fat = filesystem_fat_create();
     filesystem_t *littlefs = filesystem_littlefs_create(500, 16);
     combination[0] = (struct combination_map){.device = flash, .filesystem = littlefs};
@@ -161,7 +175,7 @@ static void benchmark_read(void) {
 int main(void) {
     stdio_init_all();
     init_filesystem_combination();
-
+    printf("start of benchmark\n");
     for (size_t i = 0; i < NUM_COMBINATION; i++) {
         struct combination_map setting = combination[i];
         printf("Test of %s on %s:\n", setting.filesystem->name, setting.device->name);
