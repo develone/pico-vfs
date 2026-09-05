@@ -9,5 +9,6 @@ target_link_libraries(benchmark PRIVATE
   filesystem_littlefs
   filesystem_vfs
 )
-pico_enable_stdio_usb(benchmark 1)
+#pico_enable_stdio_usb(benchmark 1)
+pico_enable_stdio_uart(benchmark 1)
 pico_add_extra_outputs(benchmark)
